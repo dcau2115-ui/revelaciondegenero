@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Revelación de Género</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #faf7f3;
+      color: #7a5c4b;
+      text-align: center;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+
+    .frase {
+      font-size: 1.4rem;
+      margin-top: 40px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .portada img,
+    .cuerpo img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .evento p {
+      font-size: 1.1rem;
+      margin: 10px 0;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .time-box {
+      background: #f1e6dc;
+      padding: 15px 20px;
+      border-radius: 15px;
+      min-width: 80px;
+    }
+
+    .time-box span {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-whatsapp {
+      background: #cfa88a;
+      color: white;
+    }
+
+    .btn-maps {
+      background: #e6d3c3;
+      color: #7a5c4b;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- FRASE INICIAL -->
+  <section>
+    <div class="frase reveal">
+      💫 Un momento especial está por revelarse… 💫
+    </div>
+  </section>
+
+  <!-- PORTADA -->
+  <section class="portada reveal">
+    <img src="portada.jpeg" alt="Portada Revelación de Género">
+  </section>
+
+  <!-- INFORMACIÓN DEL EVENTO -->
+  <section class="evento reveal">
+    <h1>Revelación de Género</h1>
+    <p><strong>📅 Día:</strong> 14 de febrero de 2026</p>
+    <p><strong>⏰ Hora:</strong> 5:00 PM</p>
+    <p><strong>📍 Lugar:</strong> Hacienda La Bonita<br>Salón y Eventos</p>
+
+    <!-- COUNTDOWN -->
+    <div class="countdown" id="countdown">
+      <div class="time-box"><span id="days">0</span>Días</div>
+      <div class="time-box"><span id="hours">0</span>Horas</div>
+      <div class="time-box"><span id="minutes">0</span>Min</div>
+      <div class="time-box"><span id="seconds">0</span>Seg</div>
+    </div>
+  </section>
+
+  <!-- CUERPO -->
+  <section class="cuerpo reveal">
+    <img src="cuerpo.jpeg" alt="Cuerpo Invitación">
+  </section>
+
+  <!-- BOTONES -->
+  <section class="reveal">
+    <div class="buttons">
+      <a class="btn btn-whatsapp" 
+         href="https://wa.me/51979143805?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20revelación%20de%20género%20💛"
+         target="_blank">
+         Confirmar asistencia
+      </a>
+
+      <a class="btn btn-maps"
+         href="https://maps.app.goo.gl/nVx6iotrZkn3ZXs68"
+         target="_blank">
+         Ver ubicación
+      </a>
+    </div>
+  </section>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Animaciones al hacer scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Countdown
+    const eventDate = new Date("2026-02-14T17:00:00").getTime();
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+      document.getElementById("hours").innerText = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      document.getElementById("minutes").innerText = Math.floor((distance / (1000 * 60)) % 60);
+      document.getElementById("seconds").innerText = Math.floor((distance / 1000) % 60);
+    }, 1000);
+  </script>
+
+</body>
+</html>
