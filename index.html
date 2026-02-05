@@ -5,7 +5,7 @@
   <title>Revelación de Género</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Fuente -->
+  <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
@@ -18,21 +18,26 @@
     }
 
     section {
-      padding: 60px 20px;
-      max-width: 900px;
+      padding: 32px 20px;
+      max-width: 850px;
       margin: auto;
     }
 
     h1, h2 {
       font-family: 'Playfair Display', serif;
       font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .titulo-principal {
+      font-size: 2rem;
     }
 
     .frase {
-      font-size: 1.4rem;
-      margin-top: 40px;
+      font-size: 1.1rem;
+      margin: 10px 0;
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(20px);
       transition: all 1s ease;
     }
 
@@ -44,51 +49,55 @@
     .portada img,
     .cuerpo img {
       width: 100%;
-      max-width: 600px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      max-width: 580px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      margin-top: 12px;
     }
 
     .evento p {
-      font-size: 1.1rem;
-      margin: 10px 0;
+      font-size: 1.05rem;
+      margin: 6px 0;
     }
 
     .countdown {
       display: flex;
       justify-content: center;
-      gap: 15px;
-      margin-top: 30px;
+      gap: 12px;
+      margin-top: 18px;
       flex-wrap: wrap;
     }
 
     .time-box {
       background: #f1e6dc;
-      padding: 15px 20px;
-      border-radius: 15px;
-      min-width: 80px;
+      padding: 12px 18px;
+      border-radius: 14px;
+      min-width: 70px;
     }
 
     .time-box span {
       display: block;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: bold;
     }
 
     .buttons {
       display: flex;
-      gap: 20px;
+      gap: 16px;
       justify-content: center;
-      margin-top: 40px;
+      margin-top: 28px;
       flex-wrap: wrap;
     }
 
     .btn {
       text-decoration: none;
-      padding: 14px 28px;
+      padding: 13px 26px;
       border-radius: 30px;
-      font-size: 1rem;
+      font-size: 0.95rem;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .btn-whatsapp {
@@ -102,18 +111,26 @@
     }
 
     .btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
     }
   </style>
 </head>
 
 <body>
 
-  <!-- FRASE INICIAL -->
+  <!-- FRASES INICIALES -->
   <section>
+    <h1 class="titulo-principal reveal">
+      Te invitamos a descubrir nuestro mayor secreto
+    </h1>
+
     <div class="frase reveal">
-      💫 Un momento especial está por revelarse… 💫
+      Un momento lleno de amor, ilusión y ternura 🤍
+    </div>
+
+    <div class="frase reveal">
+      Nuestro milagro está en camino y queremos compartirlo contigo
     </div>
   </section>
 
@@ -122,12 +139,21 @@
     <img src="portada.jpeg" alt="Portada Revelación de Género">
   </section>
 
-  <!-- INFORMACIÓN DEL EVENTO -->
+  <!-- INFORMACIÓN -->
   <section class="evento reveal">
-    <h1>Revelación de Género</h1>
+    <h2>Revelación de Género</h2>
+
+    <div class="frase reveal">
+      Acompáñanos a descubrir si nuestro bebé es niño o niña ✨
+    </div>
+
     <p><strong>📅 Día:</strong> 14 de febrero de 2026</p>
     <p><strong>⏰ Hora:</strong> 5:00 PM</p>
-    <p><strong>📍 Lugar:</strong> Hacienda La Bonita<br>Salón y Eventos</p>
+    <p><strong>📍 Lugar:</strong> Hacienda La Bonita – Salón y Eventos</p>
+
+    <div class="frase reveal">
+      Falta muy poco para vivir este momento tan especial 💫
+    </div>
 
     <!-- COUNTDOWN -->
     <div class="countdown" id="countdown">
@@ -141,6 +167,9 @@
   <!-- CUERPO -->
   <section class="cuerpo reveal">
     <img src="cuerpo.jpeg" alt="Cuerpo Invitación">
+    <div class="frase reveal">
+      Tu presencia hará este momento aún más especial 🧸
+    </div>
   </section>
 
   <!-- BOTONES -->
@@ -149,20 +178,19 @@
       <a class="btn btn-whatsapp" 
          href="https://wa.me/51979143805?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20revelación%20de%20género%20💛"
          target="_blank">
-         Confirmar asistencia
+         💬 Confirmar asistencia
       </a>
 
       <a class="btn btn-maps"
          href="https://maps.app.goo.gl/nVx6iotrZkn3ZXs68"
          target="_blank">
-         Ver ubicación
+         📍 Ver ubicación
       </a>
     </div>
   </section>
 
   <!-- SCRIPTS -->
   <script>
-    // Animaciones al hacer scroll
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -174,7 +202,6 @@
 
     reveals.forEach(el => observer.observe(el));
 
-    // Countdown
     const eventDate = new Date("2026-02-14T17:00:00").getTime();
 
     setInterval(() => {
